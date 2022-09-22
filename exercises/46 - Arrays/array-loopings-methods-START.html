@@ -129,6 +129,82 @@
       Looping Methods
     */
 
+    // function logTopping(topping) {
+    //   console.log(topping);
+    // };
+    // toppings.forEach(logTopping); Below is an another way to do the above with arrow funcation
+
+    // toppings.forEach(topping => {
+    //   console.log(topping);
+    // });
+
+
+    // going through all the paramters for .forEach
+    function logTopping(topping, index, originalArray) {
+      const nextTopping = originalArray[index + 1];
+      const prevTopping = originalArray[index - 1];
+      // log the topping
+      console.log(topping);
+      // log the prev topping if there is one
+      prevTopping ? console.log(prevTopping) : null;
+
+      // log the next topping if there is one
+      // a ternary that is asking if nextTopping exists, if so console.log if not, do nothing  
+      nextTopping ? console.log(nextTopping) : null;
+      // if its the last item in the array, say good bye
+      // a ternary
+      index === originalArray.length - 1
+        ? console.log('Goodbye')
+        : console.log('Getting the next Topping');
+
+      // the code below is the same as the code block above, a conditional
+      // index === originalArray.length && console.log('Goodbye');
+      console.log('-------🍕-------');
+    }
+
+    toppings.forEach(logTopping);
+    // the forEach doesn't return data. This is why we used it for eventlistners aka changing CSS
+    console.clear();
+
+    // Map
+    function addArms(face) {
+      return `👋 ${face} 👋`;
+    }
+
+    const toys = faces.map(addArms);
+
+    console.log(toys);
+
+    function bosify(name) {
+      return `${name} Bos`;
+    }
+
+    function capitalize(word) {
+      // coude below could be return `word[0].toUpperCase() + word.slice(1); but we do not like to use + if not numbers
+      return `${word[0].toUpperCase()}${word.slice(1)}`;
+    }
+
+    // you can chain .map, make sure you ; at the end, not between
+    const fullNames = ['wes', 'kait', 'poppy']
+      .map(capitalize)
+      .map(bosify);
+    console.log(fullNames);
+
+    const orderTotalsWithTax = orderTotals.map(total => total * 1.13);
+    console.log(orderTotalsWithTax);
+
+    //     function attachBody(face, body) {
+    //       return `
+    //           ${face}
+    // 　　　　　${body.repeat(3)}
+    // 　　　　 ${Array(3).fill(body).join(' ')}
+    // 　　　👇🏽　 ${body.repeat(2)}　👇🏽
+    //         ${Array(2).fill(body).join('   ')}
+    //         ${Array(2).fill(body).join('   ')}
+    // 　　　　　👢　　👢
+    //       `
+    //     }
+
   </script>
 </body>
 

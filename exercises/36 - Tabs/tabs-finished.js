@@ -9,12 +9,13 @@ function handleTabClick(event) {
   });
   // mark all tabs as unselected
   tabButtons.forEach(tab => {
-    // tab.ariaSelected = false;
+    // tab.ariaSelected = false; this does not work for ARIA attribute
     tab.setAttribute('aria-selected', false);
   });
   // mark the clicked tab as selected
   event.currentTarget.setAttribute('aria-selected', true);
   // find the associated tabPanel and show it!
+  // code below is the same as const id = event.currentTarget.id, Wes's ediot just destructed the code
   const { id } = event.currentTarget;
 
   /*
@@ -26,8 +27,8 @@ function handleTabClick(event) {
 
   // METHOD 2 - find in the array of tabPanels
   console.log(tabPanels);
-  const tabPanel = tabPanels.find(
-    panel => panel.getAttribute('aria-labelledby') === id
+  const tabPanel = tabPanels.find(panel => 
+    panel.getAttribute('aria-labelledby') === id
   );
   tabPanel.hidden = false;
 }
